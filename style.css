@@ -1,0 +1,100 @@
+body {
+    background-color: #313131;
+    /* Fondo negro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateZ(5px);
+}
+
+#keyboard {
+    perspective: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(145deg, #232323, #2b2b2b);
+    /* Gradiente para profundidad */
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+    /* Sombra definida */
+    width: 720px;
+    height: 220px;
+    border-radius: 10px;
+    transform: rotateX(54deg) rotateY(0deg) rotateZ(-30deg);
+    /* Inclinación del teclado */
+    transform-style: preserve-3d;
+    margin: auto;
+    /* Centrar el teclado en la pantalla */
+}
+  /* Ajusta para alinear con la perspectiva del teclado */
+
+
+
+.key {
+    position: relative;
+    width: 60px;
+    /* Tamaño de la tecla */
+    height: 60px;
+    margin: 3px;
+    padding: 0;
+    /* Ajustado para evitar sobrescritura */
+    font-size: 16px;
+    color: #fff;
+    line-height: 60px;
+    /* Centrar el texto verticalmente */
+    cursor: pointer;
+    background: linear-gradient(145deg, #555, #333);
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    transform: translateZ(30px);
+    /* Eleva la tecla sobre el plano base */
+    transition: transform 0.25s ease-out;
+}
+
+.key::before,
+.key::after {
+    content: '';
+    position: absolute;
+    background: #424242;
+    /* Ajusta el color según sea necesario para simular sombra o profundidad */
+}
+
+/* Cara lateral derecha */
+.key::before {
+    width: 10px;
+    /* Ajusta el ancho para la profundidad deseada */
+    height: 100%;
+    right: -10px;
+    top: 0;
+    transform: skewY(-45deg);
+}
+
+/* Cara superior */
+.key::after {
+    height: 10px;
+    /* Ajusta la altura para la profundidad deseada */
+    width: 100%;
+    top: -10px;
+    left: 0;
+    transform: skewX(-45deg);
+}
+
+
+.key:hover::before,
+.key:hover::after {
+    background: #494949;
+    /* Sutil cambio de color al pasar el mouse */
+}
+
+.key:active {
+    /* Ajusta para reducir la altura o cambiar el color al presionar la tecla */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
